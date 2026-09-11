@@ -38,11 +38,11 @@ public class Main {
         builder.setFrosting(scanner.nextLine().trim());
         System.out.println("Enter toppings or press Enter to skip (if more than one, separate with ','):");
         String input = scanner.nextLine().trim();
-        if (!input.isEmpty()) {
+        if (!input.isEmpty()) { //this code is used to separate toppings
             String[] items = input.split(",");
             for (String item : items) {
                 builder.addTopping(item.trim());
-            }
+            } //without: [chocolate strawberry], with: [chocolate, strawberry]
         }
         System.out.println("Enter custom text on a cake or press Enter to skip:");
         builder.setMessage(scanner.nextLine().trim());

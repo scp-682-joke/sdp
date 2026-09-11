@@ -44,9 +44,6 @@ public class PresetCakeBuilder implements CakeBuilder {
 
     @Override
     public Cake build() {
-        if (flavor == null || frosting == null) {
-            throw new IllegalStateException("Preset cake must have both a flavor and frosting set.");
-        }
         return new Cake(flavor, layers, frosting, toppings, message);
     }
 }

@@ -16,9 +16,6 @@ public class CustomCakeBuilder implements CakeBuilder {
 
     @Override
     public CakeBuilder setFlavor(String flavor) {
-        if (flavor == null || flavor.isBlank()) {
-            throw new IllegalArgumentException("Flavor cannot be empty.");
-        }
         this.flavor = flavor;
         return this;
     }
@@ -34,9 +31,6 @@ public class CustomCakeBuilder implements CakeBuilder {
 
     @Override
     public CakeBuilder setFrosting(String frosting) {
-        if (frosting == null || frosting.isBlank()) {
-            throw new IllegalArgumentException("Frosting cannot be empty.");
-        }
         this.frosting = frosting;
         return this;
     }
@@ -64,9 +58,6 @@ public class CustomCakeBuilder implements CakeBuilder {
     private void validateCakeState() {
         if (layers > 3 && toppings.isEmpty()) {
             throw new IllegalStateException("Tall cakes with more than 3 layers require at least one structural topping/anchor.");
-        }
-        if (flavor == null || frosting == null) {
-            throw new IllegalStateException("Custom cake requires both flavor and frosting to be specified.");
         }
     }
 }

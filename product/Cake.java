@@ -12,11 +12,11 @@ public final class Cake{
     private final String message;
 
     public Cake(String flavor, int layers, String frosting, List<String> toppings, String message) {
-        this.flavor = flavor;
+        this.flavor = validateAlphabeticText(flavor, "Flavor");
         this.layers = layers;
-        this.frosting = frosting;
+        this.frosting = validateAlphabeticText(flavor, "Frosting");
         this.toppings = new ArrayList<>(toppings);
-        this.message = message;
+        this.message = (message != null) ? message : "";
     }
 
     public String getFlavor(){ return flavor; }
@@ -33,5 +33,15 @@ public final class Cake{
                 "\n  Toppings: " + toppings +
                 "\n  Writing: '" + (message.isEmpty() ? "None" : message) + '\'' +
                 "\n}";
+    }
+    private static String validateAlphabeticText(String value, String fieldName) {
+        if (value == null || value.isBlank()) {
+            throw new IllegalArgumentException(fieldName + " cannot be empty.");
+        }
+        // Accepts only letters and spaces (e.g., rejects "145sss")
+        if (!value.matches("^[a-zA-Z\\s]+$")) {
+            throw new IllegalArgumentException(fieldName + " must contain letters only (e.g., no numbers or symbols like '145sss').");
+        }
+        return value;
     }
 }
