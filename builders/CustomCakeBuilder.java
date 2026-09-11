@@ -57,12 +57,16 @@ public class CustomCakeBuilder implements CakeBuilder {
 
     @Override
     public Cake build() {
+        validateCakeState();
         return new Cake(flavor, layers, frosting, toppings, message);
     }
 
     private void validateCakeState() {
         if (layers > 3 && toppings.isEmpty()) {
             throw new IllegalStateException("Tall cakes with more than 3 layers require at least one structural topping/anchor.");
+        }
+        if (flavor == null || frosting == null) {
+            throw new IllegalStateException("Custom cake requires both flavor and frosting to be specified.");
         }
     }
 }
