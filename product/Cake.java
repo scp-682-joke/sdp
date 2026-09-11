@@ -1,3 +1,5 @@
+package product;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,7 +26,7 @@ public final class Cake{
 
     @Override
     public String toString() {
-        return "Cake {" +
+        return "product.Cake {" +
                 "\n  Flavor: '" + flavor + '\'' +
                 "\n  Layers: " + layers +
                 "\n  Frosting: '" + frosting + '\'' +
